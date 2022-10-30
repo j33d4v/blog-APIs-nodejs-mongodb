@@ -3,7 +3,7 @@ var passport = require("passport")
 const { body, validationResult } = require("express-validator")
 const { hashPassword, validateUser } = require("../config/helper")
 
-// const authenticate = require('../middleware/authenticate')
+const authenticate = require('../middleware/authenticate')
 
 async function createUser(req, res) {
     const { first_name, last_name, email, password, phone_number } = req.body;
@@ -32,7 +32,6 @@ async function createUser(req, res) {
 const loginUser = async (req, res) => {
     const { email, password } = req.body
     const user = await validateUser(email, password)
-    return res.json(user)
     if (!user) {
         return res.status(401).send("Invalid crendentials!")
     }
