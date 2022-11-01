@@ -11,7 +11,7 @@ const { connectToDatabase } = require("./db")
 
 
 const userRoute = require('./routes/user')
-
+const blogRoute = require('./routes/blog')
 
 connectToDatabase()
 const app = express();
@@ -37,9 +37,8 @@ app.get('/', function (req, res) {
 });
 
 app.use('/users', userRoute);
-// Router.use('/products', productRoute)
-// Router.use('/business', businessRouter)
-// Router.use('/categories', categoryRoute)
+app.use('/blog', blogRoute);
+
 
 // // catch 404 and forward to error handler
 // app.use(function (req, res, next) {
