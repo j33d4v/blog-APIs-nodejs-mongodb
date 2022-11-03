@@ -26,6 +26,7 @@ const blogSchema = new Schema({
     },
     reading_time: {
         type: Number,
+
     },
     tags: {
         type: Array,

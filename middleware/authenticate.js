@@ -48,10 +48,11 @@ exports.verifyAdmin = async (req, res, next) => {
 
 exports.isAuthor = async (req, res, next) => {
     try {
-        const blog = await blogModel.findOne({ id: req.params.id})
+        const blog = await blogModel.findById(req.params.id)
         // if(!blog){
         //     return res.status(400).json({err, msg : "Blog not found"});
         // }
+
         if (blog.author == req.user._id ) {
             next()
         }

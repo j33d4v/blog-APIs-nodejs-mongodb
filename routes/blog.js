@@ -5,9 +5,10 @@ const {
   createBlog,
   getAllBlog,
   getBlogById,
-  updateBlogById,
+  publishBlogById,
   editBlogById,
   deleteBlogById,
+  getAllUserBlog,
 } = require("../controllers/blogController")
 const { validateBlog, validate } = require("../middleware/blogValidation")
 
@@ -21,13 +22,13 @@ router
 router 
   .route('/:id')
   .get(getBlogById)
-  .put(authenticate.verifyUser, authenticate.isAuthor, validateBlog(), editBlogById)
-  .patch(authenticate.verifyUser, authenticate.isAuthor, updateBlogById)
+  .put(authenticate.verifyUser, authenticate.isAuthor, validateBlog(), validate, editBlogById)
+  .patch(authenticate.verifyUser, authenticate.isAuthor, publishBlogById)
   .delete(authenticate.verifyUser, authenticate.isAuthor, deleteBlogById)
 
 router 
-  .route('/logout')
-  // .get(authenticate.verifyUser, logoutUser)
+  .route('/allBlog/:id')
+  .get(authenticate.verifyUser, getAllUserBlog)
 
 
 module.exports = router;
