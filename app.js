@@ -10,14 +10,14 @@ const { connectToDatabase } = require("./db")
 
 
 
-const userRoute = require('./routes/user')
-const blogRoute = require('./routes/blog')
+const userRoute = require('./src/routes/user')
+const blogRoute = require('./src/routes/blog')
 
 connectToDatabase()
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/src/views'));
 app.set('view engine', 'jade');
 
 // app.use(logger('dev'));
