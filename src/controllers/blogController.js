@@ -1,9 +1,5 @@
 const { blogModel } = require("../model/blogs")
 const {userModel} = require("../model/users")
-const { hashPassword, validateUser } = require("../config/helper")
-
-const authenticate = require('../middleware/authenticate');
-const { validateLogin } = require("../middleware/authValidation");
 
 async function createBlog(req, res) {
     const data = req.body;
@@ -33,11 +29,22 @@ async function createBlog(req, res) {
 };
 
 async function getAllBlog(req, res) {
-    const {pageSize, page } =req.query
+    const {pageSize, page, author, title, tags, order_by } =req.query
     pageSize ?? 20
     page ?? 0
 
     const blogs = await blogModel.find({state: 'published'}).limit(pageSize).skip(pageSize * page);
+        
+        // author &&  blogs.$where(() => this.author.toLowercase == author.toLowercase)
+        title && blogs.$where(() => this.title.toLowercase == title.toLowercase)
+
+        // tags ?? blogs.$where(() => {
+        //     tags.forEach(tag => {
+                
+        //     });
+        //     this.title.toLowercase == title.toLowercase
+        // })
+   
     res.status(200).json({
         status: true,
         data: blogs
@@ -135,25 +142,13 @@ async function getBlogById(req, res){
 }
 
 async function getAllUserBlog(req, res){
-    const userId = req.params.id
-    const {pageSize, page, state, author, title, tags, order_by } =req.query
+    const userId = req.user.id
+    const {pageSize, page} =req.query
     pageSize ?? 20
     page ?? 0
     order_by ?? 'createdAt'
     try{
-        const blogs = await blogModel.find({ author : userId}).sort(order_by).limit(pageSize).skip(pageSize * page)
-       
-        // state ?? blogs.$where(() => this.state.toLowercase == state.toLowercase)
-        // author ?? blogs.$where(() => this.author.toLowercase == author.toLowercase)
-        // title ?? blogs.$where(() => this.title.toLowercase == title.toLowercase)
-
-        // tags ?? blogs.$where(() => {
-        //     tags.forEach(tag => {
-                
-        //     });
-        //     this.title.toLowercase == title.toLowercase
-        // })
-
+        const blogs = await blogModel.find({ author : userId}).limit(pageSize).skip(pageSize * page)
         if(!blogs || blogs.length == 0){
             return res.status(400).json({
                 status: false,

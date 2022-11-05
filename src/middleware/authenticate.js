@@ -35,17 +35,6 @@ exports.jwtPassport = passport.use(new JwtStrategy(opts,
 
 exports.verifyUser = passport.authenticate('jwt', { session: false });
 
-exports.verifyAdmin = async (req, res, next) => {
-    try {
-        const user = await userModel.findOne({ _id: req.user._id })
-        if (user.admin) {
-            next()
-        }
-    } catch (err) {
-        res.json({ status: false, err, message: 'you are not authorised' })
-    }
-}
-
 exports.isAuthor = async (req, res, next) => {
     try {
         const blog = await blogModel.findById(req.params.id)
@@ -58,17 +47,5 @@ exports.isAuthor = async (req, res, next) => {
         }
     } catch (err) {
         res.json({ status: false, err, message: req.params.id })
-    }
-}
-
-exports.verifyUserType = async (req, res, next) => {
-    try {
-        const user = await userModel.findOne({ _id: req.user._id })
-        console.log(user)
-        if (user.usertype == 'business') {
-            next()
-        }
-    } catch (err) {
-        res.json({ status: false, err, message: 'you are not authorised' })
     }
 }

@@ -18,6 +18,9 @@ router
   .post(authenticate.verifyUser, validateBlog(), validate, createBlog)
   .get(getAllBlog)
 
+router 
+  .route('/allBlogs')
+  .get(authenticate.verifyUser, getAllUserBlog)
 
 router 
   .route('/:id')
@@ -26,9 +29,6 @@ router
   .patch(authenticate.verifyUser, authenticate.isAuthor, publishBlogById)
   .delete(authenticate.verifyUser, authenticate.isAuthor, deleteBlogById)
 
-router 
-  .route('/allBlog/:id')
-  .get(authenticate.verifyUser, getAllUserBlog)
 
 
 module.exports = router;
