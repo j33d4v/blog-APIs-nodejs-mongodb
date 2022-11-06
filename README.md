@@ -18,12 +18,12 @@ This is an api for a blog app
 - Install NodeJS, mongodb
 - pull this repo
 - update env with example.env
-- npm install
+- run `npm install`
 - run `npm run start:dev`
 
 ---
 ## Base URL
-- somehostsite.com
+- https://young-plateau-35614.herokuapp.com/
 
 
 ## Models
@@ -33,7 +33,6 @@ This is an api for a blog app
 | field  |  data_type | constraints  |
 |---|---|---|
 |  id |  string |  required |
-|  username |  string |  required |
 |  first_name | string  |  required|
 |  last_name  |  string |  required  |
 |  email     | string  |  required |
@@ -62,7 +61,7 @@ This is an api for a blog app
 
 ### Signup User
 
-- Route: /users/signup
+- Route: /signup
 - Method: POST
 - Body: 
 ```
@@ -92,7 +91,7 @@ Success
 ---
 ### Login User
 
-- Route: /users/login
+- Route: /login
 - Method: POST
 - Body: 
 ```
@@ -115,7 +114,7 @@ Success
 ---
 ### Create Blog
 
-- Route: /blogs
+- Route: /blog
 - Method: POST
 - Header
     - Authorization: Bearer {token}
@@ -151,7 +150,7 @@ Success
 ---
 ### Get Blog by Id
 
-- Route: /blogs/:id
+- Route: /blog/:id
 - Method: GET
 - Header
     - Authorization: Bearer {token}
@@ -184,7 +183,7 @@ Success
 
 ### Get All blogs
 
-- Route: /blogs
+- Route: /blog
 - Method: GET
 - Header:
     - Authorization: Bearer {token}
