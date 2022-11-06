@@ -36,7 +36,7 @@ async function getAllBlog(req, res) {
     const blogs = await blogModel.find({state: 'published'}).limit(pageSize).skip(pageSize * page);
         
         // author &&  blogs.$where(() => this.author.toLowercase == author.toLowercase)
-        title && blogs.$where(() => this.title.toLowercase == title.toLowercase)
+        // title && blogs.$where(() => this.title.toLowercase == title.toLowercase)
 
         // tags ?? blogs.$where(() => {
         //     tags.forEach(tag => {
