@@ -202,17 +202,42 @@ Success
   "status": true,
   "data": [
     {
-      "_id": "635eeb7908facaf61af9a5fd",
-      "title": "Blow Things Apart",
-      "description": "Story of son of Antonne",
-      "author": "635d1d946e0fd51acc2f1d77",
+      "_id": "6363e5451a82fea6773422bf",
+      "title": "Tent",
+      "description": "Story of Ten",
+      "author": "6363e35ac448afb0a73c320d",
       "state": "published",
-      "tags": ["Test","tester"],
-      "body": "How the thing one",
-      "createdAt": "2022-10-30T21:24:09.833Z",
-      "updatedAt": "2022-11-03T15:42:44.976Z",
-      "read_count": 0
-    },
+      "read_count": 2,
+      "tags": ["tent"],
+      "body": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "createdAt": "2022-11-03T15:59:01.387Z",
+      "updatedAt": "2022-11-03T16:16:37.821Z",
+    }
+  ]
+}
+```
+---
+
+### Get all blogs by a user
+
+- Route: /blog/allBlogs
+- Method: GET
+- Header:
+    - Authorization: Bearer {token}
+- Query params: 
+    - page (default: 1)
+    - per_page (default: 10)
+    - order_by (default: created_at)
+    - order (options: asc | desc, default: desc)
+    - state
+    - created_at
+- Responses
+
+Success
+```
+{
+  "status": true,
+  "data": [
     {
       "_id": "6363e5451a82fea6773422bf",
       "title": "Tent",
@@ -227,6 +252,41 @@ Success
     }
   ]
 }
+```
+---
+
+### Edit blog
+
+- Route: /blog/:id
+- Method: PUT
+- Header:
+    - Authorization: Bearer {token}
+- Body: 
+```
+{
+  "title": "Tent v2",
+  "description": "Story of Tent v2",
+}
+```
+- Responses
+
+Success
+```
+  {
+  "msg": "Blog Updated Successfully",
+  "data": {
+    "read_count": 0,
+    "_id": "635eeb7908facaf61af9a5fd",
+    "title": "Tent v2",
+    "description": ""Story of Tent v2",
+    "author": "635d1d946e0fd51acc2f1d77",
+    "read_count": 2,
+    "tags": ["tent"],
+    "body": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "createdAt": "2022-11-03T15:59:01.387Z",
+    "updatedAt": "2022-11-03T16:16:37.821Z",
+  }
+
 ```
 ---
 
