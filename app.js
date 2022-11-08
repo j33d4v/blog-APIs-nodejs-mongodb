@@ -9,7 +9,7 @@ const { connectToDatabase } = require("./db")
 
 const indexRoute = require('./src/routes/index')
 
-await connectToDatabase()
+connectToDatabase()
 const app = express();
 
 // view engine setup

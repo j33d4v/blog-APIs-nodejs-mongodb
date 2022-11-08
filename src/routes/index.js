@@ -4,7 +4,7 @@ const userRoute = require('./user')
 const blogRoute = require('./blog')
 
 
-router.use('/', userRoute);
+router.use('/user', userRoute);
 router.use('/blog', blogRoute);
 
 

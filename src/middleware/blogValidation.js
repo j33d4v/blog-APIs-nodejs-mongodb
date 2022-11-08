@@ -14,6 +14,7 @@ function validateBlog() {
     ]
 }
 
+
 function validateLogin() {
     return [
         body('email') 

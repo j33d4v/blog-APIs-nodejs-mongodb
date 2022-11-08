@@ -25,10 +25,9 @@ router
 router 
   .route('/:id')
   .get(getBlogById)
-  .put(authenticate.verifyUser, authenticate.isAuthor, validateBlog(), validate, editBlogById)
+  .put(authenticate.verifyUser, authenticate.isAuthor, editBlogById)
   .patch(authenticate.verifyUser, authenticate.isAuthor, publishBlogById)
   .delete(authenticate.verifyUser, authenticate.isAuthor, deleteBlogById)
-
-
+  
 
 module.exports = router;

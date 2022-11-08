@@ -9,11 +9,6 @@ const {
 const { validateSignUp, validateLogin, validate } = require("../middleware/authValidation")
 
 
-// /* GET users listing. */
-// router
-//   .route('/')
-//   .get(getAllUser)
-
 router
   .route('/signup')
   .post(validateSignUp(), validate, createUser)

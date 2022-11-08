@@ -21,7 +21,7 @@ async function createUser(req, res) {
     const hashedPassword = await hashPassword(newUser.password)
     newUser.password = hashedPassword
     const user = await userModel.create(newUser)
-    res.json({
+    res.status(201).json({
         msg: "Registration successful!",
         data: user
     })

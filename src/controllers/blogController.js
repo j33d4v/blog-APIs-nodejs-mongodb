@@ -14,7 +14,7 @@ async function createBlog(req, res) {
       blog.reading_time = time
       blog.save()
 
-        res.json({
+        res.status(201).json({
             msg: "Blog created successfully!",
             data: blog
         })  
@@ -66,7 +66,7 @@ async function publishBlogById(req, res) {
         }
         blog.state = "published"
         blog.save()
-        res.status(201).json({
+        res.status(200).json({
             msg: "Blog Published Successfully",
             data: blog
         })
@@ -100,12 +100,12 @@ async function editBlogById(req, res){
     const update = req.body;
     try{
         const blog = await blogModel.findByIdAndUpdate(id, update, { new: true });
-        res.status(201).json({
+        res.status(200).json({
             msg: "Blog Updated Successfully",
             data: blog
         })
     }catch(err){
-        return res.json({ status: false, err, message: 'Unable to update this blog' })
+        return res.status(401).json({ status: false, err, message: 'Unable to update this blog' })
     }
 }
 
