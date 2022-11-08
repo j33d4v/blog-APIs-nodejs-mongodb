@@ -61,7 +61,7 @@ This is an api for a blog app
 
 ### Signup User
 
-- Route: /signup
+- Route: /user/signup
 - Method: POST
 - Body: 
 ```
@@ -91,7 +91,7 @@ Success
 ---
 ### Login User
 
-- Route: /login
+- Route: /user/login
 - Method: POST
 - Body: 
 ```
